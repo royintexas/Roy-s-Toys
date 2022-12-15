@@ -1,0 +1,81 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//package binarytodecimal;
+
+/**
+ *
+ * @author Royin
+ */
+import java.util.Scanner;
+
+public class BinaryToDecimal {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+      //Declaring variables
+      String binary;
+      int decimal, flag = 0;
+     
+      
+      // Creating a Scanner class object to get inputs from a user.
+      Scanner sc = new Scanner(System.in);
+      
+      //This "while" loop will continue to execute until the user enters a valid binary number
+      while (true) 
+      { 
+          //Getting the string input by the user
+          System.out.print("Enter a four-digit binary string:    ");
+          binary = sc.nextLine();
+          
+          //Checking whether the entered string is valid binary number or not
+          //If yes, count number of ones, if not, display an error message
+          for(int i = 0; i< binary.length(); i++)
+          {
+              if (binary.charAt(i) != 0 && binary.charAt(i) != 1)
+              {
+                  flag = 1;
+              }
+          }
+          if(flag == 1)
+          {
+              //Displaying error message
+              System.out.print("Invalid.Binary Number Must contain only 0's and 1's");
+              if (flag == 0);
+          }else
+              break;
+      }
+      
+      // Calling the method by passing the user entered input as an argument
+       decimal = binaryToDecimal(binary);       
+       {
+             System.out.print("The Decimal number for" + binary + "is" + decimal);
+       }
+       //This method will convert the binary number to decimal number
+       private static int  binaryToDecimal(String binary);                      
+           int  counter, size, decimal = 0, power;
+           size = binary.length() - 1;
+           power = binary.length() - 1;
+           for(counter = 0; counter < size; counter++)
+           {
+               if (binary.charAt(counter) =='1')
+               {
+                  decimal = (int)(decimal + Math.pow(2,power));
+                  power--;
+               }else
+               {
+                   power--;
+               }
+           }
+           return decimal;
+       
+      
+      
+        
+    }
+    
+}

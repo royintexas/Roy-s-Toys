@@ -1,0 +1,328 @@
+/**
+ * Roy Sanderfer
+ * rsanderf@uccs.edu
+ * Date of submission:
+ * This program prompts users to provide input to determine if they should
+ * post their status or photo
+ */
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package proj3shouldipostthis;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Royin
+ */
+public class Proj3ShouldIPostThis {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int choice, abrasiveContent, drinking, songLyrics, lyricDetails;
+        int clothed, naughty, partner, couple, care, finalAnswer, oneWord, slanderish, stuff;
+        
+        //Inputs the status sellection or photochoice selection
+        System.out.print("SHOULD I POST THIS?\n");
+        System.out.print("1 for Status, 2 for Photo: \n");
+        choice = input.nextInt();
+        
+        // In case they put in bad numbers
+        if (choice < 1)
+        {
+            System.out.print("Invalid choice.");
+            
+        }else if (choice > 2)
+        {
+            System.out.print("Invalid Choice.");
+        }
+        
+        // If the person wants to go live
+        if (choice == 1)
+        {
+            //abrasiveContent idicates if innappropriate content is present
+            System.out.print("Does it contain expletives or abrasive content?\n");
+            System.out.print("1 for Yes, 2 for No: \n");
+        
+        abrasiveContent = input.nextInt();
+        
+        if (abrasiveContent !=1)
+        {
+            if (abrasiveContent != 2)
+                System.out.print("Invalid Choice.");
+        }
+        
+        if (abrasiveContent == 1)
+        {
+            System.out.print("F*** NO!");
+        }else if (abrasiveContent == 2)
+                { 
+                    System.out.print("Have you been drinking?\n");
+                    System.out.print("1 for I'M DRUNK RIGHT NOW, 2 for No: \n");
+                }
+                // The drinking variable determines if the person is drunk.
+                drinking = input.nextInt();
+                
+                if (drinking < 1)
+                {
+                    System.out.print("Invalid choice.");
+                    
+                }else if(drinking > 2)
+                {
+                    System.out.print("Invalid choice.");
+                }
+                if (drinking == 1)
+                {
+                    System.out.print("DUDE, DON'T POST THAT");
+                }
+                if (drinking == 2)
+                {
+                    // songLyrics inquires about the type of song.
+                    System.out.print("Is your status update a batch of cryptic song lyrics that will make people ask, \"Are you OK?\"\n");
+                    System.out.print("1 for Yes, 2 for No: \n");
+                }
+                songLyrics = input.nextInt();
+                
+                if (songLyrics < 1)
+                {
+                    if (songLyrics > 2)
+                    {
+                        System.out.print("Invalid choice.");
+                    }
+                }
+                if (songLyrics == 1)
+                {
+                    System.out.print("PLEASE SPARE US");
+                }
+                if (songLyrics == 2)
+                {
+                    System.out.print("Does it contain details of relationship woes, a doctor's visit, or bathroom troubles?\n");
+                    System.out.print("1 for Yes, 2 for No: \n");
+                }
+                // lyricDetails inquire as to what is in the lyrics.
+                lyricDetails = input.nextInt();
+                
+                if (lyricDetails < 1)
+                { 
+                    if (lyricDetails >2)
+                   {
+                    System.out.print("Invalid choice.");
+                   }
+                }else if (lyricDetails == 1)
+                {
+                    System.out.print("PLEASE SPARE US");
+                }
+                if (lyricDetails == 2)
+                {
+                    System.out.print("Is it one word update, i.e. \"bored,\"\"hungry,\" or \"tired\"?\n");
+                    System.out.print("1 for Yes, 2 for No: \n");
+                }
+                
+                //oneWord inquires as to whether it is a one word update or not.
+                oneWord = input.nextInt();
+                if (oneWord < 1)
+                {
+                    System.out.print("Invalid response");
+                }
+                if (oneWord > 2)
+                {
+                    System.out.print("Invalid response");
+                }
+                if (oneWord == 1)
+                {
+                    System.out.print("PLEASE SPARE US\n");
+                }else if (oneWord == 2)
+                {
+                    System.out.print("Does it slander a co-worker, employer, or frenemy?\n");
+                    System.out.print("1 for Yes, 2 for No: \n");
+                }
+                // slanderish defines if it is slanderish or hateful.
+                slanderish = input.nextInt();
+                    if (slanderish < 1)
+                {
+                    System.out.print("Invalid response");
+                }
+                if (slanderish > 2)
+                {
+                    System.out.print("Invalid response");
+                }
+                
+                if (slanderish == 1)
+
+                {
+                    System.out.print("STOP BEING A JERK\n");
+                } 
+                
+                    if (slanderish == 2)
+                   {
+                       System.out.print("Ask yourself,\n\"Will anyone care?\"\nIs the answer: \n");
+                       System.out.print("1 for yes, 2 for NO: \n");
+                   }
+                // care determines if anyone will care to see the update.
+                care = input.nextInt();
+                
+                if (care <1)
+                {
+                    System.out.print("Invalid Choice.");
+                }else if (care >2)
+                {
+                    System.out.print("Invalid choice.");
+                }
+                
+                if (care == 1)
+                {
+                    System.out.print("GO FOR IT\n");
+                }else if (care ==2)
+                {
+                    System.out.print("PLEASE SPARE US\n");
+                }
+                
+        }       
+        // we have a photo
+        if (choice == 2)
+        { 
+        System.out.print("Is everyone in it fully clothed?\n");
+        System.out.print("1 for Yes, 2 for No: \n");
+        }
+        
+        // Clothed defines if they are naked or not
+        clothed = input.nextInt();
+        if (clothed < 1)
+        {
+            System.out.print("Invalid choice.");
+        }else if (clothed > 2)
+        {
+            System.out.print("Invalid choice.");
+        }
+         if (clothed == 1)
+         {
+             System.out.print("Are you doing anything illegal in it?\n");
+             System.out.print("1 for Yes, 2 for No: \n");
+         }else if (clothed == 2)
+         {
+             System.out.print("PUT YOUR PANTS BACK ON\n");
+         }
+         
+         // naughty defines if they are doing anything naughty or illegal.
+          naughty = input.nextInt();
+          if (naughty < 1)
+        {
+            System.out.print("Invalid choice.");
+        }else if (naughty > 2)
+        {
+            System.out.print("Invalid choice.");
+        } else if (naughty == 1)
+        {
+            System.out.print("DUDE, DON'T POST THAT\n");
+        }else if (naughty == 2)
+        {
+            System.out.print("Is it of you and your boyfriend or girlfriend? \n");
+            System.out.print("1 for Yes, 2 for No: \n");
+        }
+          // partner defines relationship
+          partner = input.nextInt();
+          
+         if (partner <1)
+         {
+             System.out.print("Invalid option.");
+         } else if (partner >2)
+         {
+             System.out.print("Invalid option.");
+         }
+         if (partner ==1)
+         {
+             System.out.print("Are you still together? \n");
+             System.out.print("1 for Yes, 2 for MAYBE? I THINK SO? \n");
+             
+             couple = input.nextInt();
+             if (couple < 1)
+             {
+                 System.out.print("Invalid option.");
+             }else if (couple > 2)
+             {
+                 System.out.print("Invalid option.");
+             }
+             if (couple == 1)
+             {
+                 System.out.print("Ask yourself,\n \"Will anyone care?\"\n Is the answer: \n");
+                 System.out.print("1 for Yes, 2 for No: \n");
+                 
+                 care = input.nextInt();
+                  if (care < 1)
+                 {
+                     System.out.print("Invalid option.");
+                 } else if (care >2)
+                 {
+                     System.out.print("Invalid option.");
+                 }
+                  if (care == 1)
+                  {
+                      System.out.print("GO FOR IT\n");
+                  }else if (care == 2)
+                  {
+                      System.out.print("PLEASE SPARE US\n");
+                  }
+                                                      
+             } else if (couple == 2)
+               {
+                   System.out.print("GET OVER IT\n");
+               }
+             
+         } if (partner == 2)
+           {
+               System.out.print("Is it of your feet, a baby or your food? \n");
+               System.out.print("1 for Yes, 2 for No: \n");
+            
+               stuff = input.nextInt();
+            if (stuff < 1)
+            {
+                 System.out.print("Invalid option.");
+            }else if (stuff >2)
+            {
+                System.out.print("Invalid option.");
+            }
+            if (stuff == 1)
+            {
+                System.out.print("PROBABLY NOT\n");
+            }else if (stuff == 2)
+            {
+                System.out.print("\"Ask yourself,\\n \\\"Will anyone care?\\\"\\n Is the answer: \"\n");
+                System.out.print("1 for Yes, 2 for No: \n");
+                
+                finalAnswer = input.nextInt();
+                if (finalAnswer <1)
+                {
+                    System.out.print("Invalid option.");
+                }else if (finalAnswer >2)
+                {
+                    System.out.print("Invalid option.");
+                }
+                if (finalAnswer == 1)
+                {
+                    System.out.print("GO FOR IT\n");
+                }else if (finalAnswer == 2)
+                {
+                    System.out.print("PLEASE SPARE US\n");
+                }
+
+            }
+            
+                
+           
+           
+           }
+         
+        
+                                                                                                                                                                                                       
+        
+    }
+    
+}

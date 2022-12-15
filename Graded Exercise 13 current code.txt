@@ -1,0 +1,214 @@
+/*
+* File:   main.c
+* Author: Roy Sanderfer
+* Submitted:
+*/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+// Declaring the functions
+void encrypt_message(char message[], int length_of_message);
+void decrypt_message(char message[], int length_of_message);
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
+
+#define MAX_STRING_LENGTH 300
+#define SHIFT_AMOUNT 3
+#define ORIGINAL_FILE_NAME "original.txt"
+#define ENCRYPTED_FILE_NAME "encrypted.txt"
+#define DECRYPTED_FILE_NAME "decrypted.txt"
+
+
+int main() 
+{
+    remove(ENCRYPTED_FILE_NAME);
+    remove(DECRYPTED_FILE_NAME);
+
+    // file_name constant array to store file path
+    const char file_name[] = ORIGINAL_FILE_NAME;
+
+    // printf("File name with path you would like to open : \n");
+    // Get the file name from stdin
+    // gets(file_name); 
+    // FILE type pointer
+    FILE* fp;  
+    fp = fopen(file_name, "r"); // open the file in read mode
+
+    // check if file pointer is NULL or not
+    if (fp == NULL) 
+    {
+        printf("Error reading the file. Please check the file path.");
+        exit(EXIT_FAILURE);
+    }
+
+    // take buffer size of 300 characters
+    const int buffer_length = MAX_STRING_LENGTH;
+    char* buffer = (char*)malloc(sizeof(char) * buffer_length);
+
+    // check if buffer is NULL or not
+    if (buffer == NULL) 
+    {
+        printf("Error allocating memory to buffer");
+        exit(EXIT_FAILURE);
+    }
+
+    while (fgets(buffer, buffer_length, fp)) 
+    {
+        //puts("***");
+        printf("Original Message : %s\n", buffer);
+
+
+        int length_of_message = strlen(buffer);
+        if (strchr(buffer, '\n')) 
+        {
+            length_of_message--;
+        }
+        printf("Length of Message : %d\n", length_of_message);
+
+        char* message = (char*)malloc(sizeof(char) * length_of_message + 1);
+
+        strncpy(message, buffer, length_of_message);
+        message[length_of_message] = '\0';
+        printf("Original Message : %s\n", message);
+        printf("Length of Message : %d\n", length_of_message);
+        encrypt_message(message, length_of_message);
+        printf("Encrypted Message: %s\n", message);
+        fflush(stdin);
+        free(message);
+
+    }
+
+    fclose(fp);
+    fflush(stdin);
+
+    //puts("\n#################################\n");
+
+    // file_name constant array to store file path
+    const char file_name_encrypted[] = ENCRYPTED_FILE_NAME; 
+
+     //printf("File name with path you would like to open : \n");
+     //gets(file_name); // Get the file name from stdin
+
+    // open the file in read mode
+    fp = fopen(file_name_encrypted, "r");
+
+    // check if file pointer is NULL or not
+    if (fp == NULL) 
+    {
+        printf("Error reading the file. Please check the file path.");
+        exit(EXIT_FAILURE);
+    }   
+
+    while (fgets(buffer, buffer_length, fp)) 
+    {
+        printf("Encrypted Message : %s\n", buffer);
+
+        int length_of_message = strlen(buffer);
+        if (strchr(buffer, '\n')) 
+        {
+            length_of_message--;
+        }
+        printf("Length of Message : %d\n", length_of_message);
+
+        char* message = (char*)malloc(sizeof(char) * length_of_message + 1);
+
+        strncpy(message, buffer, length_of_message);
+        message[length_of_message] = '\0';
+        printf("message : %s\n", message);
+        decrypt_message(message, length_of_message);
+
+        free(message);
+
+    }
+
+    free(buffer);
+    fclose(fp);
+
+    return 0;
+}
+
+void encrypt_message(char message[], int length_of_message) 
+{
+
+    // please code your encrypt algorithm
+    // creating caesar cipher based on the problem mentioned
+
+    // replace it with your own key
+    const int key = SHIFT_AMOUNT; 
+    for (int i = 0; i < length_of_message; i++)
+    {
+        message[i] = message[i] + SHIFT_AMOUNT;
+        if (message[i] > 'Z')
+        {
+            message[i] -= 'Z' - 'A' + 1;
+            // Example: encrypting 'V' at 86 in table
+            // '[' is at 91 in table ('Z' is at 90 in table)
+            // 'Z' is 90, 'A' is 65, so 'Z' - 'A' + 1 is 26
+            // '[' is changed from 91 to 91 - 26, which is 65 ('A')
+            // this gives us exactly the wrapping we need
+        }
+    }
+    message[length_of_message] = '\0';
+    FILE* fp;
+    //open file in append mode to append data
+    fp = fopen(ENCRYPTED_FILE_NAME, "a");  
+
+    //printf("Encrypted message : %s", message);
+
+    if (fp == NULL)
+    {
+        printf("Unable to create the required file.");
+        exit(EXIT_FAILURE);
+    }
+
+    //use fprintf or fputs command to write into file
+    fprintf(fp, "%s\n", message);    
+    fclose(fp);
+}
+
+void decrypt_message(char message[], int length_of_message) 
+{
+
+    // please code your encrypt algorithm
+    // creating caesar cipher based on the problem mentioned
+    // 
+    // replace it with your own key
+    const int key = SHIFT_AMOUNT; 
+
+
+    for (int i = 0; i < length_of_message; i++)
+    {
+        message[i] = message[i] - SHIFT_AMOUNT;
+        if (message[i] < 'A')
+        {
+            message[i] += 'Z' - 'A' + 1;
+            // Example: decrypting 'E' at 69 in table
+            // '@' is at 64 in table ('A' is at 65 in table)
+            // 'Z' is 90, 'A' is 65, so 'Z' - 'A' + 1 is 26
+            // '@' is changed from 64 to 64 + 26, which is 90 ('Z')
+            // this gives us exactly the wrapping we need
+        }
+    }
+    message[length_of_message] = '\0';
+    // char message_size[length_of_message + 1];
+
+    FILE* fp;
+    //open file in append mode to append data
+    fp = fopen(DECRYPTED_FILE_NAME, "a");  
+
+    printf("Decrypted message : %s\n", message);
+
+    if (fp == NULL) 
+    {
+        printf("Unable to create the required file.");
+        exit(EXIT_FAILURE);
+    }
+
+    //use fprintf or fputs command to write into file
+    fprintf(fp, "%s\n", message); 
+    fclose(fp);
+}

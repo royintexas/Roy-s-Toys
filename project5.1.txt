@@ -1,0 +1,183 @@
+/**
+ * Roy Sanderfer
+ * rsanderf@uucs.edu
+ * Date of submission: 10/3/21
+ * This is a simple interface that will allow users to choose a
+ * shape to draw by providing their input.
+ */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+//package proj5shapes;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Royin
+ */
+public class Proj5Shapes {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        Scanner input = new Scanner( System.in );
+        boolean shouldrun = true;
+        while (shouldrun)
+            {
+        
+                System.out.println("Pick a shape to draw:");        
+                System.out.println("1 - Rectangle");
+                System.out.println("2 - Right Triangle");
+                System.out.println("3 - Upside-down Right Triangle");
+                System.out.println("4 - Isosceles Triangle");
+                System.out.println("5 - Diamond");
+                System.out.println("6 - Hourglass");
+                System.out.println("7 - Quit");
+            
+                int number = input.nextInt();
+                       
+                switch (number)
+                {
+                 case 1:
+                   int rectanglewidth,rectangleheight;                   
+                   System.out.println("You have chosen a Rectangle.");
+                   System.out.println("Enter the height ");
+                   rectangleheight = input.nextInt();
+                   System.out.println("Enter the width: ");
+                   rectanglewidth = input.nextInt();
+                     for (int h = 0; h < rectangleheight; h++)
+                       {
+                         for (int w = 0; w < rectanglewidth; w++)
+                           {
+                             System.out.print("*");
+                           }
+                           System.out.println();
+                       }break;
+                
+                 case 2:
+                    int tsize, tri, joy;
+                    System.out.println("You have chosen a Right Triangle.");
+                    System.out.print("Enter the size: ");
+                    tsize = input.nextInt();
+                      for( tri = 1; tri <= tsize ; tri++ ) 
+                        {
+                         for(joy = 1; joy <= tri; joy++ ) 
+                          {
+                            System.out.print( "*" );
+                          }
+                            System.out.println();
+                        }break;
+                      
+                 case 3:
+                    int udt, ritri, upsi;
+                    System.out.println("You have chosen an Upside-down Right Triangle.");
+                    System.out.print("Enter the size: ");
+                    udt = input.nextInt();
+                      for (ritri = udt; ritri > 0; ritri--)
+                        {
+                          for (upsi = 0; upsi < ritri; upsi++ )
+                            {
+                               System.out.print("*");
+                            }
+                            System.out.println();
+                        }break;
+                 case 4:
+                    int iso, isoc,jiff,kink;
+                    System.out.println("You have chosen an Isosceles Triangle.");
+                    System.out.print("Enter the size: ");
+                    iso = input.nextInt();                   
+                      for(isoc = 1; isoc <= iso; isoc++)
+                        {
+			  for(jiff = 1; jiff <= iso-isoc; jiff++)
+                            {
+		              System.out.print(" ");
+			    }
+			      for(kink = 1; kink <= 2*isoc-1; kink++)
+                                {
+				   System.out.print("*");
+			        }
+			        System.out.print("\n");
+                       }break;
+                       
+                 case 5:
+                        int gem, jewel, ink;
+                        System.out.println("You have chosen a Diamond.");
+                        System.out.print("Enter the size: ");
+                        gem = input.nextInt();        
+                        for(ink = 0; ink <+ gem; ink++)
+                            {
+                              for( jewel = 1; jewel <= gem-ink; jewel++)
+                                {
+                                    System.out.print(" ");
+                                }
+                                  for(jewel = 1 ; jewel <=2*ink-1; jewel++)
+                                    {
+                                        System.out.print("*");
+                                    }
+                                        System.out.println("");
+                            }
+                            for(ink = gem - 1; ink >= 1; ink--)
+                                {
+                                    for(jewel = 1; jewel<= gem -ink; jewel++)
+                                        {
+                                            System.out.print(" ");
+                                        }
+                                            for(jewel = 1; jewel <= 2*ink-1; jewel++)
+                                                {
+                                                     System.out.print("*");
+                                                }                        
+                                                System.out.println("");
+                                }break;
+                                                                
+                                  
+                          
+                 case 6:
+                    int hour, igloo, jump, kite;
+                    System.out.println("You have chosen an Hourglass.");
+                    System.out.print("Enter the size: ");
+                    hour = input.nextInt();
+                      for (igloo = 0; igloo < hour - 1; igloo++ )
+                        {
+                          for (jump = 0; jump < igloo; jump++ )
+                            {
+                               System.out.print( " " );
+                            }
+                             for (kite = hour - igloo; kite > 0; kite-- )
+                               {
+                                 System.out.print( "* " );
+                               }
+                               System.out.println();
+                        }
+                        for (igloo = 0; igloo < hour; igloo++ )
+                          {          
+                           for (jump = hour - igloo; jump > 1; jump-- )
+                             {
+                               System.out.print( " " );
+                             }
+                              for (kite = 0; kite < igloo + 1; kite++ )
+                                {
+                                   System.out.print( "* " );
+                                }
+                                System.out.println();                              
+                         }break;
+                case 7: 
+                    shouldrun = false;
+                    System.out.println("You have chosen to quit. Goodbye.\n");
+                    break;
+                    
+                default:
+                    System.out.println("That is not a valid choice");
+                    
+                    
+                    
+            }       
+         }
+    }
+}
+    

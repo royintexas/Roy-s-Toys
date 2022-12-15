@@ -1,0 +1,103 @@
+/**
+ * Roy Sanderfer
+ * rsanderf@uucs.edu
+ * Date of submission: 9/27/21
+ * This is a simple interface that will allow users to create a
+ * user name and password combination that is valid for the system.
+ */
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//package proj4logincreator;
+
+import java.util.Scanner;
+
+
+/**
+ *
+ * @author Royin
+ */
+
+
+
+public class Proj4LoginCreator {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        
+        
+        Scanner sc = new Scanner(System.in);
+        
+        
+        
+        //Providing the welcome and the instructions
+        System.out.print("Welcome to the Password Checker!\n");
+        System.out.print("Your username must be at least 8 characters and\nno more than 12.\n");
+        System.out.print("Your password cannot contain your username.\n");
+        System.out.print("It must contain at least one of the following\nspecial characters: !, @, #, $, or &. It must\n");
+        System.out.print("be at least 8 characters long and no more than 16\n");
+        System.out.print("\n");
+        
+        
+        // inputs user name with the required information. Usernames must be
+        // at least 8 characters long and no more than 12 characters long.
+
+        //Print Please enter your username: 
+        System.out.print("Please enter your username: ");
+        System.out.print("\n");
+        //Read in the username
+        String username = sc.nextLine();
+        boolean isValid = true;
+        if (username.length() < 8 || username.length() > 12 )
+        {
+             System.out.print("Your username must be between 8 and 12 characters.\n");
+             System.out.print("Sorry, your username or password is invalid.\nPlease try again...\n");
+             isValid = false;
+        }else
+        {
+           //Print Please enter your password: 
+           System.out.print("Please enter your password: \n"); 
+           String password = sc.nextLine();
+           if (password.length() < 8 || password.length() > 16)
+           {
+                System.out.print("Your password must be between 8 and 16 characters.\n");
+                
+           }
+           if (password.toLowerCase().contains (username.toLowerCase()))
+           {
+               System.out.print("Your password cannot contain your username.\n");
+               
+               isValid = false;
+           }
+           if (!password.contains  ("!") && !password.contains("@") && !password.contains("#") &&  !password.contains("$") &&  !password.contains("&"))
+           {
+               System.out.print("Your password must contain one of:!@#$&\n");
+               
+               isValid = false;
+           }
+           
+           
+           
+           if (isValid)
+           {
+              System.out.print("Congratulations, your username and password\n are valid! You may now login...\n"); 
+           }else
+           {
+             System.out.print("Sorry, your username or password is invalid.\nPlease try again...\n");  
+           }
+        }
+          
+         
+                    
+        
+        
+    }
+    
+}
