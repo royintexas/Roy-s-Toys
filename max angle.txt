@@ -1,0 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package maxangle;
+
+/**
+ *
+ * @author Royin
+ */
+
+import java.util.*;
+public class MaxAngle {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        double mass,force;        
+        String angle;        
+        final double g =9.8;
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nEnter the mass of the cart: ");
+        
+        mass = sc.nextDouble();
+        System.out.print("\nEnter the force to push the cart: ");
+        
+        force = sc.nextDouble();
+        angle = String.valueOf(Math.toDegrees(Math.asin(force/(mass*g)))).substring(0,3);
+        
+        System.out.printf("The maxim angle of the ramp is " + angle +" degrees");
+        
+        
+    }
+    
+}
